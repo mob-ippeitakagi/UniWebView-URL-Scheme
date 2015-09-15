@@ -17,6 +17,9 @@ import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 import android.webkit.ValueCallback;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.unity3d.player.UnityPlayer;
 import com.unity3d.player.UnityPlayerNativeActivity;
 
@@ -72,6 +75,18 @@ public class AndroidPlugin extends UnityPlayerNativeActivity
         CookieSyncManager manager = CookieSyncManager.getInstance();
         if (manager != null) {
             manager.startSync();
+        }
+
+        Context context = getApplicationContext();
+        // SharedPreferences取得。UnityのPlayerPrefsでは、
+        // バンドル名のSharedPreferencesを使用しているので合わせる
+        SharedPreferences packagePrefs = context.getSharedPreferences(context.getPackageName(), Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = packagePrefs.edit();
+        // 指定のスキーム経由で起動されたフラグをSharedPreferencesに保存
+        Uri data = getIntent().getData();
+        if (data != null) {
+          editor.putString("UrlSchemeQuery", data.getQuery());
+          editor.commit();
         }
     }
 
