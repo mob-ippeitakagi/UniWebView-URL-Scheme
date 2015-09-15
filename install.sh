@@ -9,7 +9,7 @@ UNITYLIBS="/Applications/Unity/Unity.app/Contents/PlaybackEngines/AndroidPlayer/
 ANDROIDCOMMAND="/usr/local/bin/android"
 
 # Do not modify lines below
-DSTDIR="./"
+DSTDIR="/Users/ippei-takagi/Downloads/"
 export ANT_OPTS=-Dfile.encoding=UTF8
 $ANDROIDCOMMAND update project -p . --target 1
 
