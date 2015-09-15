@@ -113,6 +113,12 @@ public class AndroidPlugin extends UnityPlayerNativeActivity
         }
     }
 
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
     public static void _UniWebViewInit(final String name, final int top, final int left, final int bottom, final int right) {
         runSafelyOnUiThread(new Runnable() {
             @Override
