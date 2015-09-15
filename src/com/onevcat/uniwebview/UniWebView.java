@@ -31,11 +31,7 @@ public class UniWebView extends WebView{
             webSettings.setUserAgentString(UniWebView.customUserAgent);
         }
 
-        if (Build.VERSION.SDK_INT >= 8) {
-            webSettings.setPluginState(WebSettings.PluginState.ON);
-        } else {
-            webSettings.setPluginsEnabled(true);
-        }
+        webSettings.setPluginState(WebSettings.PluginState.ON);
 
         if (Build.VERSION.SDK_INT >= 11) {
             webSettings.setDisplayZoomControls(false);
